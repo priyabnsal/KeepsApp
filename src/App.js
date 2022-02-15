@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
 
+  const [isExpanded, setExpanded] = React.useState(false);
+  function expand() {
+    setExpanded(true);
+  }
   const [ data, setData] = useState([]);
   
   useEffect( () => {
@@ -75,11 +79,15 @@ function App() {
             onChange={titlechange} 
             placeholder='Title'/>
  
-            <textarea className='txtarea' 
-            name="content" id="" cols="30" rows="1" 
+            <textarea 
+            className='txtarea' 
+            onClick={expand}
+            name="content" 
             placeholder="Take a note..." 
             value={txt} 
-            onChange={txtchange}></textarea>
+            rows={isExpanded ? 3 : 1}
+            onChange={txtchange}
+            />
             </div>
         
         <div>
