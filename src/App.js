@@ -51,13 +51,13 @@ function App() {
     console.log(value);
 
 
-    // const url= 'https://jsonplaceholder.typicode.com/todos/';
-    // fetch(url, requestOptions).then(response => {
-    //   console.log("response",response);
-    // })
-    // .catch(e => {
-    //   console.log(e);
-    // });
+    const url= 'https://jsonplaceholder.typicode.com/todos/';
+    fetch(url, requestOptions).then(response => {
+      console.log("response",response);
+    })
+    .catch(e => {
+      console.log(e);
+    });
     setTitle('');
         setTxt('');
   };
