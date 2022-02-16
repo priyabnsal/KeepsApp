@@ -15,7 +15,6 @@ function App() {
     // const url= 'https://jsonplaceholder.typicode.com/todos/';
     // const url= 'https://api.sampleapis.com/coffee/hot';
     // const url= 'https://jsonplaceholder.typicode.com/posts';
-//const url= '/api/EmployeeData?code=MzbKkFBobncqGx5agRdIq71xitejo54EfotvyTuuB5yQbFsXUF0rAw==';
     const url= 'https://objectsreturn20220216090415.azurewebsites.net/api/EmployeeData?code=MzbKkFBobncqGx5agRdIq71xitejo54EfotvyTuuB5yQbFsXUF0rAw==";
     fetch(url).then(response => response.json())
     .then(json => {
