@@ -13,14 +13,17 @@ function App() {
   useEffect( () => {
     // get api
     // const url= 'https://jsonplaceholder.typicode.com/todos/';
-    const url= 'https://jsonplaceholder.typicode.com/posts';
+    // const url= 'https://api.sampleapis.com/coffee/hot';
+    // const url= 'https://jsonplaceholder.typicode.com/posts';
+    const url= '/api/EmployeeData?code=MzbKkFBobncqGx5agRdIq71xitejo54EfotvyTuuB5yQbFsXUF0rAw==';
     fetch(url).then(response => response.json())
     .then(json => {
-      setData(json)
+      setData(json);
+      // console.log(setData);
     }).catch(e => {
       console.log(e);
     })
-  },[])
+  },[]);
 
   // -----------------------------------------
 
@@ -100,8 +103,15 @@ function App() {
             return(
               <>
               <div className='NotInput'>
-              <h3>{item.id}</h3>
-              <p>{item.title}</p>
+              <h3>{item.firstName +" " +item.lastName} </h3>
+              <p>
+              <ol>
+                <li>{item.employeeCode}</li>
+                <li>{item.jobTitleName}</li>
+                <li>{item.phoneNumber}</li>
+                <li>{item.emailAddress}</li>
+              </ol>
+              </p>
               </div>
               </>
               )
