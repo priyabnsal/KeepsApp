@@ -82,7 +82,7 @@ function App() {
             name='title'
             onChange={titlechange} 
             placeholder='Title'/>
- 
+ <br/>
             <textarea 
             className='txtarea' 
             onClick={expand}
