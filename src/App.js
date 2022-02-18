@@ -15,7 +15,8 @@ function App() {
     // const url= 'https://jsonplaceholder.typicode.com/todos/';
     // const url= 'https://api.sampleapis.com/coffee/hot';
     // const url= 'https://jsonplaceholder.typicode.com/posts';
-    const url= 'https://objectsreturn20220216090415.azurewebsites.net/api/EmployeeData?code=MzbKkFBobncqGx5agRdIq71xitejo54EfotvyTuuB5yQbFsXUF0rAw==';
+    // const url= 'https://objectsreturn20220216090415.azurewebsites.net/api/EmployeeData?code=MzbKkFBobncqGx5agRdIq71xitejo54EfotvyTuuB5yQbFsXUF0rAw==';
+    const url= 'https://getpostoperations202202170931054.azurewebsites.net/api/EmployeeData?code=xggZxJsEzckXTm6RsZKCa/Uubs8LK5q966RgR3rp129ZF6NLVmqeAQ==';
 
     fetch(url).then(response => response.json())
     .then(json => {
@@ -82,7 +83,6 @@ function App() {
             name='title'
             onChange={titlechange} 
             placeholder='Title'/>
- <br/>
             <textarea 
             className='txtarea' 
             onClick={expand}
