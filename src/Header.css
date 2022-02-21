@@ -1,0 +1,10 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 14px 25px;
+    font-size: 30px;
+    /* background-color: yellow; */
+    /* color: yellow; */
+    border-bottom: 1px solid rgba(60, 64, 67, 0.2);
+}

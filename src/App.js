@@ -1,124 +1,54 @@
-
-import './App.css';
 import React, { useEffect, useState } from 'react';
-
+import './App.css';
+import Notes from './Notes';
+import FormItems from './FormItems';
+import Formmain from './Formmain';
+import Header from './Header';
 function App() {
-
-  const [isExpanded, setExpanded] = React.useState(false);
-  function expand() {
-    setExpanded(true);
-  }
-  const [ data, setData] = useState([]);
+  let dummy =[];
   
-  useEffect( () => {
-    // get api
-    // const url= 'https://jsonplaceholder.typicode.com/todos/';
-    // const url= 'https://api.sampleapis.com/coffee/hot';
-    // const url= 'https://jsonplaceholder.typicode.com/posts';
-    // const url= 'https://objectsreturn20220216090415.azurewebsites.net/api/EmployeeData?code=MzbKkFBobncqGx5agRdIq71xitejo54EfotvyTuuB5yQbFsXUF0rAw==';
-    const url= 'https://getpostoperations202202170931054.azurewebsites.net/api/EmployeeData?code=xggZxJsEzckXTm6RsZKCa/Uubs8LK5q966RgR3rp129ZF6NLVmqeAQ==';
+  const [expenses, setExpenses] =useState(dummy);
+  function fetchData(){
+      const url= 'https://getpostapidemo.azurewebsites.net/api/GetFunction?code=kEsdLM8a0BnMQiK86p0bo8NliFZ5Wn6cFRaJYu2GGw6ajhnx29psUA==';
+      fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        setExpenses(json);
+        // console.log(setData);
+      }).catch(e => {
+        console.log(e);
+      });
+    };
+    useEffect( () => {
+      // get api
+      fetchData();
+    },[]);
 
-    fetch(url).then(response => response.json())
-    .then(json => {
-      setData(json);
-      // console.log(setData);
-    }).catch(e => {
-      console.log(e);
+
+  const addHandler = (task) => {
+    const url= 'https://getpostapidemo.azurewebsites.net/api/PostFunction?code=NNbJmiaYzZP3WIqEQx8VUqcAqKa4jPLtb5UXJhaS8tzC9lpXHmGLgg==';
+    fetch(url, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(task)
     })
-  },[]);
-
-  // -----------------------------------------
-
-  const [titles,setTitle] = useState('');
-    const [txt,setTxt] = useState('');
-
-    const titlechange = (event) => {
-        setTitle(event.target.value);
-    };
-    const txtchange = (event) => {
-        setTxt(event.target.value);
-    };
-// ------------------------------------------
-  // Post API
-  const value = {
-    title:'First',
-    txt:"hello my name is"
-  };
-  const requestOptions = {
-    method: 'POST',
-    headers: { 
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify(value)
-};
-  const postputEvent = (event) => {
-    event.preventDefault();
-    // const updData=[value, ...d];
-    // setD(updData);
-
-    console.log(value);
-
-
-    const url= 'https://jsonplaceholder.typicode.com/todos/';
-    fetch(url, requestOptions).then(response => {
+    .then(response => {
       console.log("response",response);
+      fetchData();
     })
     .catch(e => {
       console.log(e);
     });
-    setTitle('');
-        setTxt('');
   };
-  
+  return (
+    <>
+    <Header/>
+    <Formmain OnAddHandler = {addHandler}/>
+    <Notes item ={expenses}/>
     
-    return (
-      <>
-      <div className='App'>
-      <div className='nav'>Keep App</div>
-    <form onSubmit={postputEvent}>
-        <div className='NoteInput'>
-            <input className='title' type='text' 
-            value={titles} 
-            name='title'
-            onChange={titlechange} 
-            placeholder='Title'/>
-            <textarea 
-            className='txtarea' 
-            onClick={expand}
-            name="content" 
-            placeholder="Take a note..." 
-            value={txt} 
-            rows={isExpanded ? 3 : 1}
-            onChange={txtchange}
-            />
-            </div>
-        
-        <div>
-            <button type='submit' onClick={postputEvent} className='btn'> + </button>
-        </div>
-      </form>
-         
-        {
-          data.map( (item) => {
-            return(
-              <>
-              <div className='NotInput'>
-              <h3>{item.firstName +" " +item.lastName} </h3>
-              <p>
-              <ol>
-                <li>{item.employeeCode}</li>
-                <li>{item.jobTitleName}</li>
-                <li>{item.phoneNumber}</li>
-                <li>{item.emailAddress}</li>
-              </ol>
-              </p>
-              </div>
-              </>
-              )
-          })
-        }
-      </div>
     </>
   );
 }
