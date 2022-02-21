@@ -1,6 +1,5 @@
 import React  from 'react';
 import './Note.css'
-import Card from './Card'
 const Note = (props) => {
   
   const deleteNote = (id) => {
