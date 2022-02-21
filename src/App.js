@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Notes from './Notes';
-import FormItems from './FormItems';
 import Formmain from './Formmain';
 import Header from './Header';
 function App() {
