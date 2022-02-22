@@ -3,7 +3,7 @@ import './Note.css'
 const Note = (props) => {
   
   const deleteNote = (id) => {
-    const url= `https://getpostapidemo.azurewebsites.net/api/DeleteFunction?code=z4CMEFr7bzcA3ayaakndj7MDZXrrSTmAnF48oLCr8lS1TGUT7DEYcA==/${id}`;
+    const url= `https://getpostapidemo.azurewebsites.net/api/DeleteFunction?code=z4CMEFr7bzcA3ayaakndj7MDZXrrSTmAnF48oLCr8lS1TGUT7DEYcA==&id=${id}`;
       fetch(url,{
         method:'DELETE'
       })
@@ -18,7 +18,7 @@ const Note = (props) => {
     };
     
     const updateNote = (id) => {
-      const url= `https://6213733cf43692c9c605221f.mockapi.io/api/keep/${id}`;
+      const url= `https://getpostapidemo.azurewebsites.net/api/UpdatedFunction?code=NrYDSjYL4Hdzu4pH6653/BJpPQueT5jquamEqATE/qQ3nsEtx0uxbw==?id=${id}`;
       fetch(url,{
         method:'PUT'
       })
