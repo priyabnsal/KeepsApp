@@ -9,12 +9,14 @@ function Notes(props) {
         data => (
           <Note 
             key= {data.id}
+            id={data.id}
               title={data.title} 
-              txt={data.text}/>
+              text={data.text}
+              />
+              
         )
       )
     }
-    
     
     </>
   );

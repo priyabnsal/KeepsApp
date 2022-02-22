@@ -9,14 +9,18 @@ const FormItems = (props) => {
   }
   // -----------------------------------------
 
+  // const [id,setid] = useState('');
+  const [text,setText] = useState('');
   const [titles,setTitle] = useState('');
-    const [txt,setTxt] = useState('');
 
+//   const idchange = (event) => {
+//     setid(event.target.value);
+// };
+    const textchange = (event) => {
+        setText(event.target.value);
+    };
     const titlechange = (event) => {
         setTitle(event.target.value);
-    };
-    const txtchange = (event) => {
-        setTxt(event.target.value);
     };
 // ------------------------------------------
 
@@ -25,58 +29,49 @@ const FormItems = (props) => {
       event.preventDefault();
       
       const value = {
-        title:titles,
-        txt:txt
+        // id:id,
+        text:text,
+        title:titles
       };
       props.OnSave(value);
       console.log(value);
+      // setid('');
+      setText('');
       setTitle('');
-      setTxt('');
       
     }
-// Post API
-  // const requestOptions = ;
-  const sumbithander = (event) => {
-    // const url= 'https://getpostapidemo.azurewebsites.net/api/PostFunction?code=NNbJmiaYzZP3WIqEQx8VUqcAqKa4jPLtb5UXJhaS8tzC9lpXHmGLgg==';
-    // fetch(url, {
-    //   method: 'POST',
-    //   headers: { 
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': '*'
-    //   },
-    //   body: JSON.stringify(value)
-    // })
-    // .then(response => {
-    //   // console.log("response",response);
-      
-    // })
-    // .catch(e => {
-    //   console.log(e);
-    // });
-  };
+    // <input className='id' type='text' 
+    //     value={id} 
+    //     name='id'
+    //     onChange={idchange} 
+    //     placeholder='id'/>
+    
   return (
       <>
       
       <form onSubmit={sumbithandler}>
       <div className='NoteInput'>
+
           <input className='title' type='text' 
           value={titles} 
           name='title'
           onChange={titlechange} 
           placeholder='Title'/>
+
           <textarea 
           className='txtarea' 
           onClick={expand}
           name="content" 
           placeholder="Take a note..." 
-          value={txt} 
+          value={text} 
           rows={isExpanded ? 3 : 1}
-          onChange={txtchange}
+          onChange={textchange}
           />
           </div>
       
       <div>
-          <button type='submit' onClick={sumbithander} className='btn'> + </button>
+          <button type='submit' className='btn'> + </button>
+          
       </div>
     </form>
       
