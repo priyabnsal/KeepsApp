@@ -12,6 +12,7 @@ function App() {
   // -------- GET api-------------
   const fetchData = async() => {
       const url= 'https://getpostapidemo.azurewebsites.net/api/GetFunction?code=kEsdLM8a0BnMQiK86p0bo8NliFZ5Wn6cFRaJYu2GGw6ajhnx29psUA==';
+      // const url= 'https://6213733cf43692c9c605221f.mockapi.io/api/keep';
       const response = await fetch(url);
       const data = await response.json();
       setExpenses(data);
@@ -22,15 +23,19 @@ function App() {
     },[]);
     
     // ------- POST api ------------
-  const addHandler = (task) => {
-    const url= 'https://getpostapidemo.azurewebsites.net/api/PostFunction?code=NNbJmiaYzZP3WIqEQx8VUqcAqKa4jPLtb5UXJhaS8tzC9lpXHmGLgg==';
+    const addHandler = (task) => {
+    const {id, title, text} = task;
+    const url= `https://getpostapidemo.azurewebsites.net/api/PostFunction?code=NNbJmiaYzZP3WIqEQx8VUqcAqKa4jPLtb5UXJhaS8tzC9lpXHmGLgg==&id=${id}&title=${title}&text=${text}`;
+    // const url= 'https://6213733cf43692c9c605221f.mockapi.io/api/keep';
     fetch(url, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
-      body: JSON.stringify(task)
+      body: JSON.stringify({
+        id, title, text
+      })
     })
     .then(response => {
       console.log("data->",task);
@@ -41,30 +46,10 @@ function App() {
     });
   };
 
-  // function updateNote(tasks)
-  // {
-  //   console.log(tasks.id);
-  //   const url= `https://getpostapidemo.azurewebsites.net/api/UpdatedFunction?code=NrYDSjYL4Hdzu4pH6653/BJpPQueT5jquamEqATE/qQ3nsEtx0uxbw==?id=${tasks.id}`;
-  //   fetch(url, {
-  //     method: 'PUT',
-  //     headers:{
-  //       'Accept':'application/json',
-  //       'Content-Type':'application/json'
-  //     },
-  //     body:JSON.stringify(tasks)
-  //   })
-  //   .then((result) => { result.json()
-  //   .then((resp) => {
-  //       console.warn(resp)
-  //       fetchData();
-  //     })
-  //   })
-  // }
-
-
   // ------------ DELETE api -----------
   const deleteNote = (id) => {
     const url= `https://getpostapidemo.azurewebsites.net/api/DeleteFunction?code=z4CMEFr7bzcA3ayaakndj7MDZXrrSTmAnF48oLCr8lS1TGUT7DEYcA==&id=${id}`;
+    // const url= `https://6213733cf43692c9c605221f.mockapi.io/api/keep/${id}`;
       fetch(url,{
         method:'DELETE'
       })
@@ -94,8 +79,9 @@ function App() {
     // console.log(title, text);
     let item={id, title, text}
     console.log("id->",id)
-    fetch(`https://getpostapidemo.azurewebsites.net/api/UpdatedFunction?code=NrYDSjYL4Hdzu4pH6653/BJpPQueT5jquamEqATE/qQ3nsEtx0uxbw==/id=${id}`, {
-      method: 'PUT',
+    fetch(`https://getpostapidemo.azurewebsites.net/api/UpdatedFunction?code=NrYDSjYL4Hdzu4pH6653/BJpPQueT5jquamEqATE/qQ3nsEtx0uxbw==&id=${id}&title=${title}&text=${text}`, {
+    // fetch(`https://6213733cf43692c9c605221f.mockapi.io/api/keep/${id}`, {
+    method: 'PUT',
       headers:{
         'Accept':'application/json',
         'Content-Type':'application/json'
@@ -103,7 +89,7 @@ function App() {
       body:JSON.stringify(item)
     }).then((result) => { result.json()
       .then((resp) => {
-        fetchData()
+        fetchData();
       })
     })
   }

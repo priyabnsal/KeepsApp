@@ -49,7 +49,7 @@ const FormItems = (props) => {
   return (
       <>
       
-      <form onSubmit={sumbithandler}>
+      <form onSubmit={sumbithandler} method="POST">
       <div className='NoteInput'>
 
           <input className='title' type='text' 

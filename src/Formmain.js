@@ -8,7 +8,7 @@ const Formmain = (props) => {
     const savedataHandler = (main) => {
         const valueData={
             ...main,
-            id:Math.random().toString()
+            id:Math.floor(Math.random() * 1000).toString()
         }
         props.OnAddHandler(valueData);
         console.log(valueData);
