@@ -70,7 +70,7 @@ const FormItems = (props) => {
           </div>
       
       <div>
-          <button type='submit' className='btn'> + </button>
+          <button type='submit' className='bt1'> + </button>
           
       </div>
     </form>

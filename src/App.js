@@ -119,19 +119,20 @@ function App() {
             <h3>{curEle.title}</h3>
             <p>{curEle.text}</p>
                   
-            <button onClick={() => deleteNote(curEle.id)} > Delete </button>
-            <button onClick={() => selectUser(curEle)} > Update </button>
+            <button className="m-3 btn-sm btn-danger" onClick={() => deleteNote(curEle.id)} > Delete </button>
+            <button className="m-3 btn-sm btn-warning" onClick={() => selectUser(curEle)} > Edit </button>
           </div>
         )
       })
     }
 
-    <div>
-      <input type="text" value={title} onChange={(e)=>{settitle(e.target.value)}} /> <br /><br />
-        <input type="text" value={text} onChange={(e)=>{settext(e.target.value)}} /> <br /><br />
-         <br /><br />
-        <button onClick={updateUser} >Update User</button>  
-      </div>
+    
+    <h4>Please click on a Note to edit...</h4>
+      <input type="text" className='' value={title} placeholder="Title" onChange={(e)=>{settitle(e.target.value)}} /> <br /><br />
+        <input type="text" value={text} placeholder="Take a Note ..." onChange={(e)=>{settext(e.target.value)}} /> <br /><br />
+         
+        <button className="badge badge-warning" onClick={updateUser} >Update</button>  
+      
 
     </>
   );
