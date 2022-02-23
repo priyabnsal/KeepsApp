@@ -88,9 +88,9 @@ function App() {
       },
       body:JSON.stringify(item)
     }).then((result) => { result.json()
-      .then((resp) => {
-        fetchData();
-      })
+    })
+    .then((resp) => {
+      fetchData();
     })
   }
   return (
