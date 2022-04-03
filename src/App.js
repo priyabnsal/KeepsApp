@@ -11,7 +11,8 @@ function App() {
   
   // -------- GET api-------------
   const fetchData = async() => {
-      const url= 'https://getpostapidemo.azurewebsites.net/api/GetFunction?code=kEsdLM8a0BnMQiK86p0bo8NliFZ5Wn6cFRaJYu2GGw6ajhnx29psUA==';
+    const url = 'https://getpostapidemo.azurewebsites.net/api/GetFunction?code=kEsdLM8a0BnMQiK86p0bo8NliFZ5Wn6cFRaJYu2GGw6ajhnx29psUA==';
+    
       // const url= 'https://6213733cf43692c9c605221f.mockapi.io/api/keep';
       const response = await fetch(url);
       const data = await response.json();
@@ -21,7 +22,7 @@ function App() {
     useEffect( () => {
       fetchData();
     },[]);
-    
+    // <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self'; ..." >
     // ------- POST api ------------
     const addHandler = (task) => {
     const {id, title, text} = task;
@@ -31,7 +32,8 @@ function App() {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        // "Content-Security-Policy": 'default-src "self" script-src "none" font-src "none"'
       },
       body: JSON.stringify({
         id, title, text
@@ -95,7 +97,8 @@ function App() {
   }
   return (
     <>
-    <Header/>
+      <Header/>
+      {/* <div className='nav'>Keep App</div> */}
     <Formmain OnAddHandler = {addHandler} />
     
     {
