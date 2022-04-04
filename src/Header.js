@@ -10,3 +10,4 @@ const Header = () => {
 };
 
 export default Header;
+      // "content-security-policy": "default-src *; script-src * ;style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css; font-src 'none'",
